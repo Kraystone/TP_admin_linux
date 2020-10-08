@@ -41,9 +41,9 @@ stty echo
         } || { // else
             echo "#~~Variables~~#
             export maccent=00:17:A4:4E:7B:7B
-            export usercent=leo
+            export usercent=AdminCentosBDD
             export ipcent=192.168.1.2
-            export userdeladebian=$(users | grep -i "leo")
+            export userdeladebian=$(users | grep -i "AdminDebianWeb")
             export ipdeladebian=192.168.1.1" >> /etc/bash.bashrc
             source /etc/bash.bashrc
         }
@@ -124,9 +124,9 @@ stty echo
     } || {
         echo "#~~Variables~~#
         export macdeb=00:17:A4:4E:79:A4
-        export userdeb=leo
+        export userdeb=AdminDebianWeb
         export ipdeb=192.168.1.1
-        export userdeladecent=$(users | grep -i "jules")
+        export userdeladecent=$(users | grep -i "AdminCentosBDD")
         export ipdelacent=192.168.1.2" >> /etc/bashrc
         source /etc/bashrc
     }
