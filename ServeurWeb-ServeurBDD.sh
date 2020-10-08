@@ -192,7 +192,7 @@ stty echo
 } || [[ $chx_menu -eq 2 ]] && {
     echo -e "${MARRON}2- Création d'utilisateurs.${NC}"
     [[ $debian = Debian ]] &&{
-        [[ grep -i "adminweb" /etc/passwd ]] && {
+        [[ grep -i "AdminDebianWeb" /etc/passwd ]] && {
             userweb=1
             echo -e "${MARRON}L'utilisateur est déjà présent.${NC}"
         } || {
@@ -200,12 +200,12 @@ stty echo
             echo -e "${RED}L'utilisateur n'a pas été créer, vous allez le créer.${NC}"
         }
         [[ $userweb -eq 0 ]] && {
-            adduser adminweb 
-            echo -e "${GREEN}Utilisateur adminweb crée.${NC}"
+            adduser AdminDebianWeb 
+            echo -e "${GREEN}Utilisateur AdminDebianWeb crée.${NC}"
         }
         unset userweb
     } || {
-        [[ grep -i "adminbdd" /etc/passwd ]] && {
+        [[ grep -i "AdminCentosBDD" /etc/passwd ]] && {
             userbdd=1
             echo -e "${MARRON}L'utilisateur est déjà présent.${NC}"
         } || {
@@ -213,9 +213,9 @@ stty echo
             echo -e "${RED}L'utilisateur n'a pas été créer, vous allez le créer.${NC}"
         }
         [[ $userbdd -eq 0 ]] && {
-            adduser adminbdd
-            passwd adminbdd
-            echo -e "${GREEN}Utilisateur adminbdd crée.${NC}"
+            adduser AdminCentosBDD
+            passwd AdminCentosBDD
+            echo -e "${GREEN}Utilisateur AdminCentosBDD crée.${NC}"
         }
         unset userbdd
     }
@@ -247,12 +247,12 @@ stty echo
         sudo systemctl enable mariadb 
         firewall-cmd --add-port=3306/tcp 
         firewall-cmd --permanent --add-port=3306/tcp 
-        mysql -u root -e "create user adminbdd;" 
+        mysql -u root -e "create user AdminCentosBDD;" 
         mysql -u root -e "create database marcachat;" 
         mysql -u root -p marcachat < marcachatfinal.sql 
         echo -e "${RED}Avant de CONTINUER !!!!${NC} transferer le fichier 'index.php' et donner la localisation de l'erreur d'accès"
         read location
-        mysql -u root -e "GRANT ALL privileges ON marcachat.* TO 'adminbdd'@'$location';" 
+        mysql -u root -e "GRANT ALL privileges ON marcachat.* TO 'AdminCentosBDD'@'$location';" 
         echo -e "${GREEN}---- Voila MariaDB est configurée ! Félicitations ! A vous la joi des requetes ${RED}SANS CONCATENATION ! "
     }
 } || [[ $chx_menu -eq 5 ]] && {
